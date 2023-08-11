@@ -1,31 +1,34 @@
-import homeLogo from '../../assets/Login.png'
-import './Home.css';
+import ListaPostagens from '../../components/postagens/ListaPostagens';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import Image from '../../assets/gif-h.gif'
 
 
-function Home() {
+
+function Home() {    
     return (
         <>
-        <div className="bg-indigo-900 flex justify-center">
-          <div className='container grid grid-cols-2 text-white'>
+        <div className="bg-dark-blue flex justify-center">
+          <div className='container flex text-white'>
             <div className="flex flex-col gap-4 items-center justify-center py-4">
-              <h2 className='text-5xl text-center font-bold'>Seja bem-vindo ao meu blog</h2>
-              <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
-  
+              <h2 className='text-5xl font-bold'>Bem-vindo ao GameBlog!</h2>
+              <p className='text-xl'>Deixe aqui os melhores jogos que já jogou ou que pretende jogar!</p><br></br>
               <div className="flex justify-around gap-4">
-              
-                <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
-              </div>
+              <ModalPostagem />
+              <button className='rounded border border-[#37393b] bg-white text-[#37393b] hover:bg-blue-gray hover:text-white py-2 px-4'>Ver postagens</button>
+            </div>
             </div>
   
             <div className="flex justify-center ">
-              <img src={homeLogo} alt="Home Logo" className='w-1/2' />
       
+            </div>
+            <div>
+              <img src={Image}/>
             </div>
           </div>
         </div>
-      
+        <ListaPostagens />
       </>
     );
 }
 
-export default Home
+export default Home;
