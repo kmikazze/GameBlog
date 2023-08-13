@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
+import animation from '../../assets/gif-l.gif'
+
 
 function Login() {
   let navigate = useNavigate();
@@ -35,34 +37,37 @@ function login(e: ChangeEvent<HTMLFormElement>) {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
-        <form className="flex justify-center items-center flex-col w-1/2 gap-4" onSubmit={login}>
-          <h2 className="text-slate-900 text-5xl ">Entrar</h2>
-          <div className="flex flex-col w-full">
+      <div className="flex flex-wrap border justify-center items-center font-bold font-dark-blue bg-blue-gray pb-14">
+        <div>
+          <img src={animation} className='mr-44 '/>
+        </div>
+        <form className="flex flex-col bg-yellow rounded-lg shadow-xl gap-4 mt-9 rounded px-10 py-9 items-center" onSubmit={login}>
+          <h2 className="text-dark-blue text-5xl mb-3">Entrar</h2>
+          <div className="flex flex-col w-full text-dark-blue font-semibold">
             <label htmlFor="usuario">Usuário</label>
             <input
               type="text"
               id="usuario"
               name="usuario"
-              placeholder="Usuario"
-              className="border-2 border-slate-700 rounded p-2"
+              placeholder="Email"
+              className="border border-blue-gray focus:ring-1 focus:outline-none ring-blue-gray rounded p-2"
               value={usuarioLogin.usuario} 
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full text-dark-blue font-semibold">
             <label htmlFor="senha">Senha</label>
             <input
               type="password"
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border border-blue-gray focus:ring-1 focus:outline-none ring-blue-gray rounded p-2"
               value={usuarioLogin.senha} 
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
-          <button  type='submit' className="rounded bg-indigo-400 hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
+          <button  type='submit' className="rounded-full bg-dark-blue hover:bg-blue-gray hover:text-dark-blue text-white w-1/2 py-2 flex justify-center">
            {isLoading ? <RotatingLines
             strokeColor="white"
             strokeWidth="5"
@@ -75,12 +80,15 @@ function login(e: ChangeEvent<HTMLFormElement>) {
 
           <hr className="border-slate-800 w-full" />
 
-          <p>
+          <p className='text-dark-blue font-semibold'>
             Ainda não tem uma conta?{' '}
-            <Link to="/cadastro" className="text-indigo-800 hover:underline">
-              Cadastre-se
-            </Link>
           </p>
+          <Link
+                to="/cadastro"
+                className="text-verde_escuro font-bold    hover:underline dark:text-verde_claro2"
+              >
+                Cadastre-se
+              </Link>
         </form>
         <div className="fundoLogin hidden lg:block"></div>
       </div>
